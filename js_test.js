@@ -32,46 +32,25 @@ function roundTo(value, digits) {
   const factor = 10 ** digits;
   return Math.round(value * factor) / factor;
 }
-const position = toGws84.getLocation(178052.848, 2501451.107);
-// console.log(position.lat,",", position.lng);
-const twd97 = toTwd97.getLocation(22.61338465512156, 120.30166733810103);
-// console.log(twd97.x,",", twd97.y);
 
-// const p = { x: 1, y: 0 };
-// const center = { x: 0, y: 0 };
-// const angle = 90;
-
-// const rotated = rotatePoint(p, center, angle);
-// console.log(rotated);
 ///正角度轉逆時針，負角度轉順時針
-function pixelToGps(tapX, tapY, imageWidth, imageHeight, angle) {
+function pixelRotate(tapX, tapY, imageWidth, imageHeight, angle) {
   const x = tapX;
   const y = tapY;
-  console.log(x, y);
-  // const center = { x: 213.33333333333334, y: -376.15354484919703 };
   const center = { x: imageWidth / 2, y: imageHeight / 2 };
-  console.log("center=", center.x, ",", center.y);
   const rotated = rotatePoint({ x: x, y: y }, center, angle);
-  console.log(rotated.x, ",", rotated.y);
-  // const position = toGws84.getLocation(rotated.x,rotated.y);
-  // console.log(position.lat,",", position.lng);
-
-  // const position = toGws84.getLocation(x,y);
-  // console.log(position.lat,",", position.lng);
+  return rotated;
 }
-// Point ({ x: 213.33333333333334, y: 376.15354484919703, z: null, m: null })
-pixelToGps(
-  382.81618442290574,
-  608.7000817554648,
-  426.6666666666667,
-  752.3070896983941,
-  -135.0
-);
-// pixelToGps(
-//   1,
-//   0,
-//   0,
-//   0,
-//   90
-// );
-//257.926093 , 91.875838
+
+///傳入轉完的點
+///圖片起始點
+function pixelToGps(result, scale, originX, originY) {
+  twd97X = originX + result.x * scale;
+  twd97Y = originY - result.y * scale;
+  const position = toGws84.getLocation(twd97X, twd97Y);
+  console.log("twd97",twd97X,",", twd97Y);
+  console.log(position.lat, ",", position.lng);
+}
+const result = pixelRotate(154, 145, 300, 300, -150);
+console.log(result);
+pixelToGps(result,0.15,224646.19175000003,2658660.8697499996);
