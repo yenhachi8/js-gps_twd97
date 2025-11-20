@@ -51,6 +51,6 @@ function pixelToGps(result, scale, originX, originY) {
   console.log("twd97",twd97X,",", twd97Y);
   console.log(position.lat, ",", position.lng);
 }
-const result = pixelRotate(154, 145, 300, 300, -150);
+const result = pixelRotate(124, 100, 250, 200, -90);
 console.log(result);
-pixelToGps(result,0.15,224646.19175000003,2658660.8697499996);
+pixelToGps(result,0.15,224857.97550000003,2658659.1047499995);
