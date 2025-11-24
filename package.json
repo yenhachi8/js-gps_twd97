@@ -1,6 +1,8 @@
 {
+  "type": "module",
   "dependencies": {
     "trans97": "^1.0.3",
     "twd97-to-latlng": "^1.0.0"
   }
+  
 }
