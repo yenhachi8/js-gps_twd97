@@ -1,5 +1,5 @@
 export function rotatePoint(point, center, angleDeg, ndigits = 6) {
-  const angleRad = (-angleDeg * Math.PI) / 180;//角度加上負號比較符合直覺
+  const angleRad = (angleDeg * Math.PI) / 180;
 
   const dx = point.x - center.x;
   const dy = point.y - center.y;

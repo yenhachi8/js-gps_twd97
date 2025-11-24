@@ -23,7 +23,28 @@ const mapUtility = new MapUtility.MapUtility( info );
 const position1 = mapUtility.canvasToWgs();
 console.log(position1.lat, ",", position1.lng);
 
-
 const dis = mapUtility.calculateDistance(tapPoint, new Models.Point(0,0),scale);
 console.log( mapUtility.meterToYard(dis ));
 
+// //todo: 把需要的資訊都包進
+// const mapInfo = new MapUtility.ImagePorjectInfo(
+//   new Models.Twd97Point(224445.229795377, 2658857.6739020883),
+//   new Models.Twd97Point(224437.96000000002, 2659003.195),
+//   new Models.Point(213.33333333333334, 376.15354484919703),
+//   -135,
+//   0.15,
+//   0.25068546807677244
+// );
+// // const mapInfo = new MapUtility.ImagePorjectInfo(
+// //   new Models.Twd97Point(1, 0),
+// //   new Models.Twd97Point(0, 0),
+// //   new Models.Point(0, 0),
+// //   -90,
+// //   1,
+// //   1
+// // );
+// const mapUtility = new MapUtility.MapUtility(mapInfo);
+// const res = mapUtility.twdToCanvas(mapInfo);
+
+// console.log(mapUtility.info);
+// console.log(res.x, ",", res.y);
