@@ -1,4 +1,5 @@
-export class ImagePorjectInfo {
+// 把經緯度投到畫布上
+export class ModelProjectInfo {
   constructor(targetTwd97Point, originTwd97Point,center,angle, scale, scaleCO) {
     this.targetTwd97Point = targetTwd97Point;
     this.originTwd97Point = originTwd97Point;

@@ -1,4 +1,5 @@
-export class ImgInfo {
+// 把畫布上的點轉成經緯度
+export class ModelTapInfo {
   constructor(tapPoint, imgSize, angle, scale, originTwd97Point) {
     this.tapPoint = tapPoint;
     this.imgSize = imgSize;

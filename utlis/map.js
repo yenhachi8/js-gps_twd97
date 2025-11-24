@@ -15,7 +15,7 @@ export class MapUtility {
     const rotatedResult = Utils.rotate(
       this.info.tapPoint,
       this.info.imgSize,
-      this.info.angle
+      -(this.info.angle)
     );
     const position = Utils.pixelToWgs(
       rotatedResult,
