@@ -2,8 +2,10 @@
 // const { rotatePoint, toGws84, toTwd97 } = require("./utility.js");
 
 import * as Models from "./indexes/index_model.js";
-import * as MapUtility from "./utlis/map.js";
+import * as Util from "./indexes/index_utility.js";
 
+
+//
 const tapPoint = new Models.ModelPoint(46, 164);
 const imgSize = new Models.ModelImgSize({ width: 250, height: 200 });
 const angle = -90;
@@ -19,32 +21,37 @@ const tapInfo = new Models.ModelTapInfo(
   scale,
   originTwd97Point,
 );
-const mapUtility = new MapUtility.MapUtility( tapInfo );
-const position1 = mapUtility.canvasToWgs();
-console.log(position1.lat, ",", position1.lng);
+const wgs = Util.MapUtility.canvasToWgs(tapInfo);
+console.log("輸入 pixel -> wgs",wgs.lat, ",", wgs.lng);
 
-const dis = mapUtility.calculateDistance(tapPoint, new Models.ModelPoint(0,0),scale);
-console.log( mapUtility.meterToYard(dis ));
 
-//todo: 把需要的資訊都包進
+const targetWgs =  new Models.ModelGpsPoint(24.03243072429292, 120.75093556033729);
+const targetTwd97 = Util.toTwd97.getLocation(targetWgs.lat, targetWgs.lng);
 const mapProjectInfo = new Models.ModelProjectInfo(
-  new Models.ModelTwd97Point(224445.229795377, 2658857.6739020883),
-  new Models.ModelTwd97Point(224437.96000000002, 2659003.195),
-  new Models.ModelPoint(213.33333333333334, 376.15354484919703),
-  -135,
+  new Models.ModelTwd97Point(targetTwd97.x, targetTwd97.y),
+  new Models.ModelTwd97Point(224646.19175000003,2658660.8697499996),
+  //TODO: 待調整
+  new Models.ModelPoint(150,-150) ,
+  -150,
   0.15,
-  0.25068546807677244
+  1
 );
-// const mapInfo = new MapUtility.ImagePorjectInfo(
-//   new Models.Twd97Point(1, 0),
-//   new Models.Twd97Point(0, 0),
-//   new Models.Point(0, 0),
-//   -90,
-//   1,
-//   1
-// );
-const mapUtility2 = new MapUtility.MapUtility(mapProjectInfo);
-const res = mapUtility2.twdToCanvas(mapProjectInfo);
 
-console.log(mapUtility2.info);
+
+const res = Util.MapUtility.twdToCanvas(mapProjectInfo);
 console.log(res.x, ",", res.y);
+//旋轉 base case
+const mapInfo = new Models.ModelProjectInfo(
+  new Models.ModelTwd97Point(1, 0),
+  new Models.ModelTwd97Point(0, 0),
+  new Models.ModelPoint(0, 0),
+  90,
+  1,
+  1
+);
+const res0 = Util.MapUtility.twdToCanvas(mapInfo);
+console.log(res0.x, ",", res0.y);
+
+
+const dis = Util.MapUtility.calculateDistance(tapPoint, new Models.ModelPoint(0,0),scale);
+console.log( Util.MapUtility.meterToYard(dis ));
