@@ -1,25 +1,12 @@
 import * as Utils from "../indexes/index_utility.js";
-export class ImgInfo {
-  constructor(tapPoint, imgSize, angle, scale, originTwd97Point) {
-    this.tapPoint = tapPoint;
-    this.imgSize = imgSize;
-    this.angle = angle;
-    this.scale = scale;
-    this.originTwd97Point = originTwd97Point;
-  }
-}
-export class ImagePorjectInfo {
-  constructor(targetTwd97Point, originTwd97Point,center,angle, scale, scaleCO) {
-    this.targetTwd97Point = targetTwd97Point;
-    this.originTwd97Point = originTwd97Point;
-    this.scale = scale;
-    this.scaleCO = scaleCO;
-    this.center = center;
-    this.angle = angle;
-  }
-}
 // 1 meter = 1.0936133 yard
 export const yardUnit = 1.0936133;
+
+ 
+  
+
+
+
 export class MapUtility {
   constructor(info) {
     this.info = info;
@@ -37,8 +24,7 @@ export class MapUtility {
     );
     return position;
   }
-  //scale = 地圖縮放比例
-  //scaleCO = scaleCanvasOrigin 畫布和圖片的縮放比例
+
   //wgs -> twd97
   projectWgsToCanvas(projectInfo) {
     
