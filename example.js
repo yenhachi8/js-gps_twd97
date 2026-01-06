@@ -10,7 +10,6 @@ import * as Util from "./indexes/index_utility.js";
 //<= wgs座標
 //==================================================
 const tapPoint = new Models.ModelPoint(111,215);
-const imgSize = new Models.ModelImgSize({ width: 250, height: 250 });
 const angle = -135;
 const scale = 0.15;
 //圖片起始點
@@ -20,7 +19,6 @@ const originTwd97Point = new Models.ModelTwd97Point(
 const center = new Models.ModelPoint(43.60000000005425, 1320.6999999998768);
 const tapInfo = new Models.ModelTapInfo(
   tapPoint,
-  imgSize,
   angle,
   scale,
   originTwd97Point,

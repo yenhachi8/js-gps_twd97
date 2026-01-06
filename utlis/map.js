@@ -7,7 +7,6 @@ export class MapUtility {
   static canvasToWgs(tapInfo) {
     const rotatedResultPixel = Utils.rotate(
      tapInfo.tapPoint,
-     tapInfo.imgSize,
       -(tapInfo.angle),
       tapInfo.centerPoint
     );
