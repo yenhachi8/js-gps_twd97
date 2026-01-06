@@ -9,20 +9,22 @@ import * as Util from "./indexes/index_utility.js";
 //=> canvas point 
 //<= wgs座標
 //==================================================
-const tapPoint = new Models.ModelPoint(204, 177);
-const imgSize = new Models.ModelImgSize({ width: 250, height: 200 });
-const angle = -90;
+const tapPoint = new Models.ModelPoint(184, 39);
+const imgSize = new Models.ModelImgSize({ width: 250, height: 250 });
+const angle = -135;
 const scale = 0.15;
 //圖片起始點
 const originTwd97Point = new Models.ModelTwd97Point(
-224857.97550000003,2658659.1047499995
+224543.62,2658970.12
 );
+const center = new Models.ModelPoint(43.60000000005425, 1320.6999999998768);
 const tapInfo = new Models.ModelTapInfo(
   tapPoint,
   imgSize,
   angle,
   scale,
   originTwd97Point,
+  center,
 );
 const wgs = Util.MapUtility.canvasToWgs(tapInfo);
 console.log(wgs.lat, ",", wgs.lng);

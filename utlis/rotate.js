@@ -22,10 +22,11 @@ function roundTo(value, digits) {
   return Math.round(value * factor) / factor;
 }
 
-export function rotate( tapPoint, imgSize , angle  ) {
+export function rotate( tapPoint, imgSize , angle, centerPoint  ) {
   const x = tapPoint.x;
   const y = tapPoint.y;
-  const center = { x: imgSize.width / 2, y: imgSize.height / 2 };
+  const center = { x: centerPoint.x, y: centerPoint.y };
+  // const center = { x: imgSize.width / 2, y: imgSize.height / 2 };
   const rotated = rotatePoint(tapPoint, center, angle);
   return rotated;
 }
